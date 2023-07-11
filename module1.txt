@@ -1,0 +1,51 @@
+# Python code that simulates drawing two balls from the urn, both with replacement and without replacement
+import random
+
+# Balls in the urn
+balls = ['blue', 'green', 'yellow']
+
+# Drawing two balls with replacement
+print("Drawing two balls with replacement:")
+for _ in range(2):
+    ball = random.choice(balls)
+    print(f"Drawn ball: {ball}")
+
+# Drawing two balls without replacement
+print("\nDrawing two balls without replacement:")
+urn = balls.copy()  # Create a copy of the original list
+for _ in range(2):
+    ball = random.choice(urn)
+    urn.remove(ball)  # Remove the drawn ball from the urn
+    print(f"Drawn ball: {ball}")
+# Python code that generates all possible samples when drawing two 
+# balls from the urn, both with replacement (ordered and unordered)
+# and without replacement (ordered and unordered):
+
+import itertools
+
+# Balls in the urn
+balls = ['blue', 'green', 'yellow']
+
+# Drawing two balls with replacement (ordered)
+print("Drawing two balls with replacement (ordered):")
+samples_with_replacement_ordered = list(itertools.product(balls, repeat=2))
+for sample in samples_with_replacement_ordered:
+    print(f"Sample: {sample}")
+
+# Drawing two balls with replacement (unordered)
+print("\nDrawing two balls with replacement (unordered):")
+samples_with_replacement_unordered = list(itertools.combinations_with_replacement(balls, 2))
+for sample in samples_with_replacement_unordered:
+    print(f"Sample: {sample}")
+
+# Drawing two balls without replacement (ordered)
+print("\nDrawing two balls without replacement (ordered):")
+samples_without_replacement_ordered = list(itertools.permutations(balls, 2))
+for sample in samples_without_replacement_ordered:
+    print(f"Sample: {sample}")
+
+# Drawing two balls without replacement (unordered)
+print("\nDrawing two balls without replacement (unordered):")
+samples_without_replacement_unordered = list(itertools.combinations(balls, 2))
+for sample in samples_without_replacement_unordered:
+    print(f"Sample: {sample}")
